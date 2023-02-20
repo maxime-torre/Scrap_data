@@ -11,6 +11,7 @@ soup = BeautifulSoup(page.content, "html.parser")
 noms_profs = soup.find_all('div',class_="contact-list-row")
 noms = []
 
+
 for prof in noms_profs:
     nom = prof.find("a").text
     #print(nom)
