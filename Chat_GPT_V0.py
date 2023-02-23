@@ -14,3 +14,4 @@ button_text = button.get_text(strip=True)
 
 # Afficher le texte extrait
 print(button_text)
+

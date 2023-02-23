@@ -33,11 +33,26 @@ for link in soup.find_all('a', class_ = "contact-list-item"):
             tel.append(href)
             #print("Num telephone = "+ link.get('href'))
 
-for k in range(len(noms)):
-    print("Nom = " + noms[k] , " | site : "+ profile_site[k])
 
+TARGETS = len(noms) # la target max est len(noms)
 
+buttons = []
 
+for k in range (TARGETS):
+    url_user = profile_site[k]
+    response = requests.get(url_user)
+    html = response.content
 
+    soup_user = BeautifulSoup(html, 'html.parser')
+    button = soup_user.find('button', {'id': 'collapse-arrow-0'})
+    if button == None:
+        buttons.append("Aucuns sujets publiés")
+    else :
+        button_text = button.get_text(strip=True)
+        buttons.append(button_text)
+    #print(buttons[k])
+"""
+for k in range(TARGETS):
+    print("Nom = " + noms[k] , " | Sujets : "+ buttons[k])
 
-
+"""
